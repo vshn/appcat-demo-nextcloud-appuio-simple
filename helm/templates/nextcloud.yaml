@@ -1,0 +1,15 @@
+apiVersion: vshn.appcat.vshn.io/v1
+kind: VSHNNextcloud
+metadata:
+  name: appcat-demo-nextcloud-appuio-simple
+  namespace: { { .Release.Namespace } }
+spec:
+  parameters:
+    service:
+      fqdn:
+        - my-nextcloud.example.com
+      version: "32"
+    size:
+      plan: standard-2
+  writeConnectionSecretToRef:
+    name: nextcloud-creds
