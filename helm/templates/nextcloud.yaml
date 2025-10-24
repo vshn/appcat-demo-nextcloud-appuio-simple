@@ -9,6 +9,9 @@ spec:
       fqdn:
         - appuio-nextcloud-demo.apps.cloudscale-lpg-2.appuio.cloud
       version: "32"
+      postgreSQLParameters:
+        encryption:
+          enabled: true
     size:
       plan: standard-2
   writeConnectionSecretToRef:
