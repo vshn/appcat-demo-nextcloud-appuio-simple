@@ -5,6 +5,15 @@ metadata:
   namespace: {{ .Release.Namespace }}
 spec:
   parameters:
+    backup:
+      retention:
+        keepDaily: 6
+    instances: 1
+    maintenance:
+      dayOfWeek: wednesday
+      timeOfDay: '23:42:18'
+    monitoring:
+      email: your@email.com
     service:
       fqdn:
         - appuio-nextcloud-demo.apps.cloudscale-lpg-2.appuio.cloud
@@ -12,7 +21,13 @@ spec:
       postgreSQLParameters:
         encryption:
           enabled: true
+        service:
+          majorVersion: "17" # use the newest postgres version available
+        monitoring:
+          email: your@email.com
+        instances: 1
     size:
       plan: standard-2
+      disk: 16Gi
   writeConnectionSecretToRef:
     name: nextcloud-creds
